@@ -1,0 +1,2 @@
+#!/bin/bash
+lastfm-mpd-cli love --lastfmusername=markododa --lastfmpassword=71fe5c5e8ef271fedaed08880f14d8c3 && notify-send -i emblem-favorite -t 500 "You love $(mpc current)"
