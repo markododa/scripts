@@ -61,7 +61,6 @@ while read -r song; do
     printf  "%s\n" "copy of $sourcedir/$song to $destdir failed" \
             "$sourcdir/$song probably doesn't exist"
   fi
-
-sed s'/.*\///' $playlist > $destdir/playlist.m3u
+sed s'/.*\///' $playlist > $destdir/$(echo $playlist | sed s'/.*\///')
 
 done < "$playlist"
