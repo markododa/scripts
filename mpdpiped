@@ -14,4 +14,3 @@ while IFS="}" read -u 3 REPLY error; do
     [ -z "$error" ] && printf ":: %s\n" "$REPLY" \
                     || { printf "==>%s\n" "$error" && exit 1; }
 done
-

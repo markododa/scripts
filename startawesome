@@ -1,0 +1,4 @@
+#!/bin/bash -login
+xrdb -load ~/.Xresources &
+setxkbmap $(cat ~/.Xkbmap) &
+exec /usr/bin/lxsession -s awesome -e Awesome

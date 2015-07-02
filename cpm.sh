@@ -57,10 +57,10 @@ fi
 
 # actually do the moving
 while read -r song; do
-  if ! rsync -P -t "$sourcedir/$song" "$destdir"; then
+  if ! rsync --size-only -P -t "$sourcedir/$song" "$destdir"; then
     printf  "%s\n" "copy of $sourcedir/$song to $destdir failed" \
             "$sourcdir/$song probably doesn't exist"
   fi
-sed s'/.*\///' $playlist > $destdir/"$(basename $playlist)"
-
 done < "$playlist"
+
+sed s'/.*\///' $playlist > $destdir/"$(basename $playlist)"

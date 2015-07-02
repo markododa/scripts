@@ -1,0 +1,6 @@
+#!/bin/bash
+while true;
+do echo "paste a link:";
+read url;
+mplayer -nosound -osdlevel 3 -prefer-ipv4 -cache 5000 -cache-seek-min 10 $url"videos/video.mp4";
+done
