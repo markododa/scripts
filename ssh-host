@@ -1,0 +1,11 @@
+#!/bin/bash
+export name=$1
+export user=`echo $2 |sed 's/@.*//'`
+export ip=`echo $2 |sed 's/.*@//'`
+printf "Host $name\n\tHostname $ip\n\tUser $user\n"
+case $3 in
+	[0-9]*)
+		printf "\tPort $3\n"
+		;;
+esac
+printf "\n"
