@@ -1,7 +1,10 @@
 #!/bin/bash
-export name=$1
-export user=`echo $2 |sed 's/@.*//'`
-export ip=`echo $2 |sed 's/.*@//'`
+ip=$1
+user=`echo $2 |sed -n 's/@.*//p'`
+name=`echo $2 |sed 's/.*@//'`
+if [ $user = '']; then
+	user='root'
+fi
 printf "Host $name\n\tHostname $ip\n\tUser $user\n"
 case $3 in
 	[0-9]*)
