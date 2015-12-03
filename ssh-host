@@ -1,4 +1,5 @@
 #!/bin/bash
+[ $# -eq 0 ] && { echo "Usage: $0 ipaddres user@hostname port\n Port is an extra argument and if user@ is missing root@hostname is assumed"; exit 1; }
 ip=$1
 user=`echo $2 |sed -n 's/@.*//p'`
 name=`echo $2 |sed 's/.*@//'`
