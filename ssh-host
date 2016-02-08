@@ -1,10 +1,10 @@
 #!/bin/bash
-[ $# -eq 0 ] && { echo "Usage: $0 ipaddres user@hostname port
+[ $# -eq 0 ] && { echo "Usage: $0 host user@ipadress port >> .ssh/config
 Port is an extra argument and if user@ is missing root@hostname is assumed"; exit 1; }
 [ $# -eq 1 ] && { echo "An argument is missing" ; exit 1; }
-ip=$1
+name=$1
 user=`echo $2 |sed -n 's/@.*//p'`
-name=`echo $2 |sed 's/.*@//'`
+ip=`echo $2 |sed 's/.*@//'`
 if [ $user = '']; then
 	user='root'
 fi
