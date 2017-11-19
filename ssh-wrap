@@ -1,0 +1,17 @@
+#!/bin/bash
+shopt -s extglob
+ssh_arg=$@
+user=$( grep -oE '[a-z][-a-z0-9]*@' <<< $ssh_arg)
+host=${ssh_arg#*@}
+host=${host% *}
+
+if ! grep -q ${host%?(:)*} .ssh/config; then
+	echo ${host%?(:)*} 
+	while true; do 
+		read -p $'Enter name of ssh host\n' name
+		case $name in
+			[a-zA-Z0-9_\-\.]* ) storm add $name $user$host; break ;;
+		esac
+	done
+fi
+ssh $ssh_arg
